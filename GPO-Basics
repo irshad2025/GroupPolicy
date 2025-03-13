@@ -1,0 +1,56 @@
+🔹 GPO Basics
+
+1️⃣ What is Group Policy (GPO)?
+✅ GPO (Group Policy Object) is a feature of Active Directory (AD) used to centrally manage security settings, user preferences, and system configurations across multiple computers in a domain.
+
+2️⃣ What are the types of Group Policies?
+✅ Local Group Policy (LGPO) – Applies to a single computer.
+✅ Domain-based GPO – Applied to AD objects (Users, Computers, OUs, Sites).
+
+3️⃣ What is the difference between GPO and a Group Policy Preference (GPP)?
+✅ GPOs enforce settings that users cannot change.
+✅ GPPs apply settings but allow users to modify them.
+
+4️⃣ Where are Group Policy settings stored?
+✅ SYSVOL folder (\\DomainName\SYSVOL\Domain\Policies).
+✅ Active Directory database for linked policies.
+
+5️⃣ What is the order of GPO processing?
+✅ LSDOU Order:
+ • Local Policies
+ • Site Policies
+ • Domain Policies
+ • OU Policies (Organizational Units)
+✅ Lower-level GPOs override higher ones unless blocked or enforced.
+
+🔹 GPO Configuration & Management
+
+6️⃣ How do you apply Group Policy settings?
+✅ Manually: Run
+
+gpupdate /force
+
+✅ Automatically: Policies apply at user login or system restart.
+
+7️⃣ How do you check which GPOs are applied to a system?
+✅ Run:
+
+gpresult /r
+
+✅ For detailed output:
+
+gpresult /h C:\GPO_Report.html
+
+8️⃣ What is the difference between Enforced and Block Inheritance?
+✅ Enforced → Ensures the GPO is applied even if lower-level GPOs conflict.
+✅ Block Inheritance → Prevents higher-level GPOs from affecting an OU.
+
+9️⃣ What are Loopback Processing modes?
+✅ Merge Mode – Combines user and computer policies.
+✅ Replace Mode – Ignores user policies and enforces only computer policies.
+
+🔟 How do you create a GPO?
+✅ Use Group Policy Management Console (GPMC):
+ • Open gpmc.msc.
+ • Right-click Group Policy Objects → New GPO.
+ • Edit settings using Group Policy Editor (gpedit.msc).
